@@ -65,19 +65,20 @@ export default class Beginning extends Component {
     geometryGate.merge(cylinderPillarL.geometry, cylinderPillarL.matrix);
     let materialGate = new THREE.MeshLambertMaterial( {color: 0xda77ff} );
     let meshGate = new THREE.Mesh(geometryGate, materialGate);
-    meshGate.position.y = (3800 + this.props.groudHeight);
+    meshGate.position.y = (3800 + this.props.groundHeight);
     meshGate.position.z = 8000;
     this.props.scene.add( meshGate );
   }
 
   walkTowardGate() {
+    if(this.props.level !== 0) return;
     this.setState({
       clicked: true
     });
 
-    this.times += 1;console.log(this.times);
+    this.times += 1;
     this.animation = requestAnimationFrame( this.walkTowardGate );
-    
+
     if(this.times < 130) {
       let direction = new THREE.Vector3();
       this.props.camera.getWorldDirection(direction);
@@ -85,23 +86,31 @@ export default class Beginning extends Component {
       this.props.camera.position.add(direction.multiplyScalar(3));
     } else if(this.times >= 140 && this.times <= 250) {
       this.props.camera.rotateX(Math.PI / 500);
-    } else if(this.times > 250) {
+    } else if(this.times > 250 && this.times < 300) {
       this.setState({
         stop: true
+      });      
+    } else if(this.times >= 300 && this.times <= 410) {
+      this.setState({
+        stop: false
+      }, () => {
+        this.props.camera.rotateX(- Math.PI / 500);
       });
+    } else if(this.times > 410) {
+      this.props.levelUp();
       return cancelAnimationFrame( this.animation );
-    }    
+    } 
   }
 
   render() {
     return(
       <div id="beginning" onClick={this.walkTowardGate}>
         {!this.state.clicked ?
-          <h1>Click to begin !</h1> :
+          <h1 className="click">點擊畫面</h1> :
           null
         }
         {this.state.stop ?
-          <h1 className="short">Welcome to LingLingLand !</h1> :
+          <h1 className="welcome-message">Welcome To LingLingLand !</h1> :
           null
         }
       </div>
