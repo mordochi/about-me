@@ -11,9 +11,9 @@ export default function createBillboard(scene, color_board, color_others) {
   rightTop.receiveShadow = true;
 
   //左上板子
-  let geometryLT = new THREE.BoxGeometry( 300, 300, 30 );
+  let geometryLT = new THREE.BoxGeometry( 150, 300, 30 );
   let materialLT = new THREE.MeshLambertMaterial( { color: color_others} );
-  let leftTop = new THREE.Mesh( geometryRT, materialRT );
+  let leftTop = new THREE.Mesh( geometryLT, materialLT );
   leftTop.lookAt(-1, Math.pow(3, 0.5), 0);
   leftTop.position.y = (300 / 2 / 2) + (15 * Math.pow(3, 0.5) / 2);
   leftTop.position.x = - ((300 * Math.pow(3, 0.5) / 4) + (15 / 2));
@@ -48,8 +48,8 @@ export default function createBillboard(scene, color_board, color_others) {
   let shapeBoard = new THREE.Shape( );
   shapeBoard.moveTo( 0, ((300 / 2)) );
   shapeBoard.lineTo( 120 * Math.pow(3, 0.5), ((300 / 2)) - 120 ); 
-  shapeBoard.lineTo( 120 * Math.pow(3, 0.5), -170);
-  shapeBoard.lineTo( - (120 * Math.pow(3, 0.5)), -170);
+  shapeBoard.lineTo( 120 * Math.pow(3, 0.5), -190);
+  shapeBoard.lineTo( - (120 * Math.pow(3, 0.5)), -190);
   shapeBoard.lineTo(- (120 * Math.pow(3, 0.5)), ((300 / 2)) - 120);
 
   let geometryBoard = new THREE.ExtrudeGeometry( shapeBoard, extrudeSettingsBoard );
