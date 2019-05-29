@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as THREE from 'three';
 
 import createBillboard from '../../share/billboard';
+import createMascot from '../../share/mascot';
 
 import './index.css';
 
@@ -12,6 +13,7 @@ export default class firstStop extends Component {
     this.state = {
     };
 
+    this.flowUp = true;
     this.leadToBillboard = this.leadToBillboard.bind(this);
   }
 
@@ -22,6 +24,14 @@ export default class firstStop extends Component {
     billboard.position.z = 5500;
     billboard.rotation.y = - Math.PI / 2;
     this.props.scene.add(billboard);
+
+    this.mascot = createMascot(this.props.scene, 0x3dc4ed);
+    this.mascot.rotation.y = - Math.PI / 3.3;
+    this.mascot.position.x = 2750;
+    this.mascot.position.y = this.props.groundHeight + 420;
+    this.mascot.position.z = 5400;
+    
+    this.props.scene.add(this.mascot);
   }
 
   componentDidUpdate(prevProps) {
@@ -32,11 +42,29 @@ export default class firstStop extends Component {
 
   leadToBillboard() {
     this.animation = requestAnimationFrame( this.leadToBillboard );
- 
+
     let direction = new THREE.Vector3();
     this.props.camera.getWorldDirection(direction);
 
-    this.props.camera.position.add(direction.multiplyScalar(3));
+    if(this.props.camera.position.z >= 5550)this.props.camera.position.add(direction.multiplyScalar(10));
+   
+    if(this.props.camera.position.z <= 8100 && this.props.camera.position.z >= 7500) {
+      this.props.camera.rotateY( - Math.PI / 300 );
+    }
+
+    if(this.props.camera.position.z <= 6000 && this.props.camera.position.z >= 5740) {
+      this.props.camera.rotateY( - Math.PI / 240 );
+    }
+
+    if(this.flowUp && this.mascot.position.y <= (this.props.groundHeight + 425)) {
+      this.mascot.position.add(new THREE.Vector3(0, 0.1, 0));
+
+      if(this.mascot.position.y > (this.props.groundHeight + 425)) this.flowUp = false;
+    } else if(!this.flowUp && this.mascot.position.y >= (this.props.groundHeight + 415)) {
+      this.mascot.position.add(new THREE.Vector3(0, -0.1, 0));
+
+      if(this.mascot.position.y < (this.props.groundHeight + 415)) this.flowUp = true;
+    }
   }
 
   render() {
