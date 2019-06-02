@@ -83,9 +83,9 @@ export default class Beginning extends Component {
       let direction = new THREE.Vector3();
       this.props.camera.getWorldDirection(direction);
 
-      this.props.camera.position.add(direction.multiplyScalar(3));
+      this.props.camera.position.add(direction.multiplyScalar(6));
     } else if(this.times >= 140 && this.times <= 250) {
-      this.props.camera.rotateX(Math.PI / 500);
+      this.props.camera.rotateX(Math.PI / 400);
     } else if(this.times > 250 && this.times < 300) {
       this.setState({
         stop: true
@@ -94,7 +94,7 @@ export default class Beginning extends Component {
       this.setState({
         stop: false
       }, () => {
-        this.props.camera.rotateX(- Math.PI / 500);
+        this.props.camera.rotateX(- Math.PI / 400);
       });
     } else if(this.times > 410) {
       this.props.levelUp();
