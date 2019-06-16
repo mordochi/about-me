@@ -18,14 +18,14 @@ export default class firstStop extends Component {
   }
 
   componentDidMount() {
-    let billboard = createBillboard(this.props.scene, 0xffffff, 0x2d34ff);
+    let billboard = createBillboard(this.props.scene, 0xffffff, 0xbc4b29);
     billboard.position.x = 3000;
     billboard.position.y = this.props.groundHeight + 500;
     billboard.position.z = 5500;
     billboard.rotation.y = - Math.PI / 2;
     this.props.scene.add(billboard);
 
-    this.mascot = createMascot(this.props.scene, 0x3dc4ed);
+    this.mascot = createMascot(this.props.scene, 0x383737);
     this.mascot.rotation.y = - Math.PI / 3.3;
     this.mascot.position.x = 2750;
     this.mascot.position.y = this.props.groundHeight + 420;

@@ -29,7 +29,7 @@ export default function createMascot(scene, color) {
   geometryNose.mergeVertices();
   modifier.modify(geometryNose);
 
-  let materialNose = new THREE.MeshLambertMaterial( {color: 0x66240e} );
+  let materialNose = new THREE.MeshLambertMaterial( {color: 0x000000} );
   let cylinderNose = new THREE.Mesh( geometryNose, materialNose );
   cylinderNose.rotation.x = Math.PI / 2.4;
   cylinderNose.position.z = 35;
@@ -37,7 +37,7 @@ export default function createMascot(scene, color) {
 
   //ear
   let geometryEar = new THREE.SphereGeometry( 5, 10, 6 );
-  geometryEar.applyMatrix( new THREE.Matrix4().makeScale( 2, 3.5, 1.0 ) );
+  geometryEar.applyMatrix( new THREE.Matrix4().makeScale( 2.5, 6, 1.0 ) );
   for (var i = 0; i < geometryEar.vertices.length; i++) {
     var vertex = geometryEar.vertices[i];
     if (vertex.y < 0) {
@@ -60,14 +60,14 @@ export default function createMascot(scene, color) {
 
   let cylinderEarR = cylinderEar.clone();
   cylinderEarR.rotation.z = - Math.PI / 9;
-  cylinderEarR.position.x = 14;
-  cylinderEarR.position.y = 20;
+  cylinderEarR.position.x = 10;
+  cylinderEarR.position.y = 10;
   cylinderEarR.position.z = 3;
 
   let cylinderEarL = cylinderEar.clone();
   cylinderEarL.rotation.z = Math.PI / 9;
-  cylinderEarL.position.x = - 14;
-  cylinderEarL.position.y = 20;
+  cylinderEarL.position.x = - 10;
+  cylinderEarL.position.y = 10;
   cylinderEarL.position.z = 3;
 
   //eye
@@ -135,7 +135,7 @@ export default function createMascot(scene, color) {
 
   let geometryEyebrow = new THREE.ExtrudeGeometry( shape, extrudeSettings );
   geometryEyebrow.applyMatrix( new THREE.Matrix4().makeScale( 0.25, 0.25, 0.25 ) );
-  let materialEyebrow = new THREE.MeshLambertMaterial( {color: 0x66240e} );
+  let materialEyebrow = new THREE.MeshLambertMaterial( {color: 0x000000} );
   let meshEyebrow = new THREE.Mesh( geometryEyebrow, materialEyebrow );
   
   let meshEyebrowR = meshEyebrow.clone();
