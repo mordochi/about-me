@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import * as SubdivisionModifier from 'three-subdivision-modifier';
 
-export default function createMascot(scene, color) {
+export default function createMascot(scene, color, mood, arm_position) {
   //head
   let geometryHead = new THREE.SphereGeometry( 28, 32, 32 );  
   let materialHead = new THREE.MeshLambertMaterial( { color: color} );
@@ -152,6 +152,17 @@ export default function createMascot(scene, color) {
   meshEyebrowL.position.y = 18;
   meshEyebrowL.position.z = 17;
 
+  if(mood === 'angry') {
+    meshEyebrowR.rotation.y = Math.PI * 2 / 8;
+    meshEyebrowR.rotation.z = Math.PI / 20;
+    meshEyebrowR.position.x = 9;
+    meshEyebrowR.position.y = 20;
+    meshEyebrowL.rotation.y = Math.PI * 5.8 / 8;
+    meshEyebrowL.rotation.z = Math.PI / 20;
+    meshEyebrowL.position.x = -9;
+    meshEyebrowL.position.y = 20;
+  }
+
   //teeth
   let extrudeSettingsTeeth = {
     steps: 4,
@@ -209,6 +220,40 @@ export default function createMascot(scene, color) {
   cylinderArmL.position.x = -19;
   cylinderArmL.position.y = -43;
 
+  if(arm_position === 'hold') {
+    let extrudeSettingsArm = {
+      steps: 1,
+      depth: 1,
+      bevelThickness: 3,
+    };
+
+    let shapeArm = new THREE.Shape( );
+    shapeArm.moveTo( 0, 20 );
+    shapeArm.quadraticCurveTo(9, 8, 0, 1);
+    shapeArm.quadraticCurveTo(-5, 0, -1, 2);
+    shapeArm.quadraticCurveTo(7, 8, 0, 19);
+
+    let geometryArm = new THREE.ExtrudeGeometry( shapeArm, extrudeSettingsArm);
+    geometryArm.applyMatrix( new THREE.Matrix4().makeScale( 1.5, 1.5, 0.6 ) );
+    let materialArm = new THREE.MeshLambertMaterial( {color: color} );
+    let meshArm = new THREE.Mesh( geometryArm, materialArm );
+    
+    cylinderArmR = meshArm.clone();
+    cylinderArmR.rotation.z = Math.PI / 6;
+    cylinderArmR.rotation.x = - Math.PI / 2;
+    cylinderArmR.position.x = 25;
+    cylinderArmR.position.y = -30;
+    cylinderArmR.position.z = 25;
+
+    cylinderArmL = meshArm.clone();
+    cylinderArmL.rotation.y = Math.PI;
+    cylinderArmL.rotation.z = Math.PI / 6;
+    cylinderArmL.rotation.x = - Math.PI / 2;
+    cylinderArmL.position.x = -25;
+    cylinderArmL.position.y = -30;
+    cylinderArmL.position.z = 25;
+  }
+
   //leg
   let geometryLeg = geometryArm.clone();
   geometryLeg.applyMatrix( new THREE.Matrix4().makeScale( 1.4, 1.3, 1.4 ) );
@@ -264,9 +309,7 @@ export default function createMascot(scene, color) {
   groupHead.add(leftEye);
   groupHead.add(meshEyebrowR);
   groupHead.add(meshEyebrowL);
-  groupHead.add(meshTeeth);
-  
-  scene.add(groupHead);
+  if(mood !== 'angry') groupHead.add(meshTeeth);
 
   let groupBody = new THREE.Group();
   groupBody.add(cylinderBody);
@@ -275,8 +318,6 @@ export default function createMascot(scene, color) {
   groupBody.add(cylinderLegR);
   groupBody.add(cylinderLegL);
   groupBody.add(meshTail);
-
-  scene.add(groupBody);
 
   let mascot = new THREE.Group();
   mascot.add(groupHead);

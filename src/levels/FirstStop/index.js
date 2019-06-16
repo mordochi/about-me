@@ -18,7 +18,7 @@ export default class firstStop extends Component {
   }
 
   componentDidMount() {
-    let billboard = createBillboard(this.props.scene, 0xffffff, 0xbc4b29);
+    let billboard = createBillboard(this.props.scene, 0xffffff, 0xd85006);
     billboard.position.x = 3000;
     billboard.position.y = this.props.groundHeight + 500;
     billboard.position.z = 5500;
