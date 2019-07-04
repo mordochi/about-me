@@ -1,11 +1,3 @@
-#beginning {
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
 #beginning h1 {
   font-size: 100px;
   line-height: 100vh;
@@ -49,6 +41,75 @@
   -webkit-animation: clickToBeginAfter 2s linear infinite; /* Safari 4.0 - 8.0 */
   -moz-animation: clickToBeginAfter 2s linear infinite;
   -o-animation: clickToBeginAfter 2s linear infinite;
+}
+
+.modal {
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100vh;
+  vertical-align: middle;
+}
+
+.modal-inner {
+  display: inline-block;
+  vertical-align: middle;
+  width: 50%;
+}
+
+.modal-inner div {
+  width: 100%;
+  height: 250px;
+}
+
+.modal-inner div p {
+  font-size: 40px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: justify;
+  line-height: 50px;
+  margin: 0;
+}
+
+.modal-inner input {
+  width: 70%;
+  height: 50px;
+  border: none;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.9);
+  background-color: transparent;
+  font-size: 30px;
+  padding: 10px;
+  color: rgba(255, 255, 255, 0.9);
+  display: block;
+  margin: 10px auto 30px;
+}
+
+.modal-inner button {
+  display: block;
+  margin: 0 auto;
+  width: 70%;
+  height: 50px;  
+  border: 0;
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.modal-inner button:disabled {
+  opacity: 0.2;
+}
+
+.modal-inner button span {
+  background: linear-gradient(to bottom right, rgba(246, 192, 120), rgba(240, 138, 87, 1));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 25px;
+  font-weight: 500;
 }
 
 #beginning .welcome-message {

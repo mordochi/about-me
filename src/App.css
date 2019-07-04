@@ -31,3 +31,19 @@
     transform: rotate(360deg);
   }
 }
+
+#app {
+  position: relative;
+}
+
+#app > div {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.top {
+  z-index: 10;
+}

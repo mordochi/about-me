@@ -22,4 +22,8 @@ code {
     monospace;
 }
 
+input, button {
+  outline: none;
+}
+
 
