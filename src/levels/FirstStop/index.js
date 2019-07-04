@@ -6,6 +6,7 @@ import createMascot from '../../share/mascot';
 
 import './index.css';
 
+
 export default class firstStop extends Component {
   constructor(props) {
     super(props);
@@ -46,7 +47,12 @@ export default class firstStop extends Component {
     let direction = new THREE.Vector3();
     this.props.camera.getWorldDirection(direction);
 
-    if(this.props.camera.position.z >= 5550)this.props.camera.position.add(direction.multiplyScalar(10));
+    if(this.props.camera.position.z >= 5550) {
+      this.props.camera.position.add(direction.multiplyScalar(10));
+    } else {
+      document.querySelector('.introduction').className += ' show-text';
+      return cancelAnimationFrame( this.animation );
+    }
    
     if(this.props.camera.position.z <= 8100 && this.props.camera.position.z >= 7500) {
       this.props.camera.rotateY( - Math.PI / 300 );
@@ -55,6 +61,7 @@ export default class firstStop extends Component {
     if(this.props.camera.position.z <= 6000 && this.props.camera.position.z >= 5740) {
       this.props.camera.rotateY( - Math.PI / 240 );
     }
+    
 
     if(this.flowUp && this.mascot.position.y <= (this.props.groundHeight + 425)) {
       this.mascot.position.add(new THREE.Vector3(0, 0.1, 0));
@@ -70,7 +77,9 @@ export default class firstStop extends Component {
   render() {
     return(
       <div id="first-stop">
-        
+        <p className="introduction">hello hello hello hello hello hello hello hello hello hello
+         hello hello hello hello hello hello hello hello hello hello hello hello hello hello 
+         hello hello hello hello hello hello hello hello hello hello hello hello</p>
       </div>
     );
   }

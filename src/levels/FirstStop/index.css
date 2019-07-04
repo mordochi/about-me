@@ -1,0 +1,23 @@
+#first-stop {
+  perspective: 100px;
+  -webkit-perspective: 110px;
+}
+
+.introduction {
+  opacity: 0;
+  position: absolute;
+  top: 29vh;
+  right: 27.5vw;
+  width: 35vw;
+  height: 30vh;
+  transform: rotate3d(0, 1, 0, -3deg);
+  text-align: justify;
+}
+
+.show-text {
+  opacity: 1;
+  transition: 2s linear;
+  -webkit-transition: 2s linear; /* Safari 4.0 - 8.0 */
+  -moz-transition: 2s linear;
+  -o-transition: 2s linear;
+}

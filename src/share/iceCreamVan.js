@@ -168,7 +168,6 @@ export default function createIceCreamVan(scene) {
   groupCone.add(coneBottom);
   groupCone.position.y = 460;
   groupCone.position.z = 440;
-  console.log(groupCone)
   groupCone.rotation.x = Math.PI / 2.8;
 
   let groupIceCream = new THREE.Group();
