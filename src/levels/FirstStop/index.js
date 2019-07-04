@@ -15,6 +15,7 @@ export default class firstStop extends Component {
     };
 
     this.flowUp = true;
+    this.nextStop = this.nextStop.bind(this);
     this.leadToBillboard = this.leadToBillboard.bind(this);
   }
 
@@ -41,6 +42,11 @@ export default class firstStop extends Component {
     }
   }
 
+  nextStop() {
+    this.props.levelUp();
+    return cancelAnimationFrame( this.animation );
+  }
+
   leadToBillboard() {
     this.animation = requestAnimationFrame( this.leadToBillboard );
 
@@ -50,8 +56,10 @@ export default class firstStop extends Component {
     if(this.props.camera.position.z >= 5550) {
       this.props.camera.position.add(direction.multiplyScalar(10));
     } else {
-      document.querySelector('.introduction').className += ' show-text';
-      return cancelAnimationFrame( this.animation );
+      if(!document.querySelector('.introduction').className.includes('show-text')) {
+        document.querySelector('.introduction').className += ' show-text';
+        document.querySelector('.arrow').className += ' appear';
+      }
     }
    
     if(this.props.camera.position.z <= 8100 && this.props.camera.position.z >= 7500) {
@@ -61,7 +69,7 @@ export default class firstStop extends Component {
     if(this.props.camera.position.z <= 6000 && this.props.camera.position.z >= 5740) {
       this.props.camera.rotateY( - Math.PI / 240 );
     }
-    
+
 
     if(this.flowUp && this.mascot.position.y <= (this.props.groundHeight + 425)) {
       this.mascot.position.add(new THREE.Vector3(0, 0.1, 0));
@@ -77,9 +85,10 @@ export default class firstStop extends Component {
   render() {
     return(
       <div id="first-stop">
-        <p className="introduction">hello hello hello hello hello hello hello hello hello hello
-         hello hello hello hello hello hello hello hello hello hello hello hello hello hello 
-         hello hello hello hello hello hello hello hello hello hello hello hello</p>
+        <p className="introduction">你好，{this.props.name}，我是這個星球的創造者。
+          這個星球主要是由一些我喜歡的東西所組成的，接下來我將帶領你探索這個星球，
+          在觀賞景點的同時我會更仔細地向你介紹我。希望能帶給你有趣的旅程並讓你更認識我！</p>
+        <div className="arrow" onClick={this.nextStop}></div>
       </div>
     );
   }

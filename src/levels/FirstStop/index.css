@@ -1,23 +1,93 @@
 #first-stop {
-  perspective: 100px;
+  perspective: 110px;
   -webkit-perspective: 110px;
+  -moz-perspective: 110px;
+  -o-perspective: 110px;
 }
 
 .introduction {
   opacity: 0;
+  font-size: 20px;
+  color: #323232;
   position: absolute;
   top: 29vh;
   right: 27.5vw;
   width: 35vw;
   height: 30vh;
-  transform: rotate3d(0, 1, 0, -3deg);
+  transform: rotate3d(0, 1, 0, -3deg) translate(0px, 20px);
+  -webkit-transform: rotate3d(0, 1, 0, -3deg) translate(0px, 20px);
+  -moz-transform: rotate3d(0, 1, 0, -3deg) translate(0px, 20px);
+  -o-transform: rotate3d(0, 1, 0, -3deg) translate(0px, 20px);
   text-align: justify;
+  line-height: 34px;
 }
 
-.show-text {
-  opacity: 1;
-  transition: 2s linear;
-  -webkit-transition: 2s linear; /* Safari 4.0 - 8.0 */
-  -moz-transition: 2s linear;
-  -o-transition: 2s linear;
+.arrow {
+  opacity: 0;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(255, 255, 255, 0.7);
+  position: absolute;
+  top: calc(50vh - 30px);
+  left: 80px;
+  animation: scaleArrow 1s linear infinite alternate;
+  -webkit-animation: scaleArrow 1s linear infinite alternate;
+  -moz-animation: scaleArrow 1s linear infinite alternate;
+  -o-animation: scaleArrow 1s linear infinite alternate;
+}
+
+.arrow:before {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 0px;
+  border-top: 50px solid transparent;
+  border-left: 50px solid rgba(255, 255, 255, 0.7);
+  position: absolute;
+  top: calc((-70.71px + 30px) / 2);
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform-origin: left top;
+  -webkit-transform-origin: left top;
+  -moz-transform-origin: left top;
+  -o-transform-origin: left top;
+}
+
+
+@keyframes scaleArrow {
+  0% {
+    transform: scale(1.2, 1.2);
+  }
+  100% {
+    transform: scale(1.4, 1.4);
+  }
+}
+
+@-webkit-keyframes scaleArrow {
+  0% {
+    -webkit-transform: scale(1.2, 1.2);
+  }
+  100% {
+    -webkit-transform: scale(1.4, 1.4);
+  }
+}
+
+@-moz-keyframes scaleArrow {
+  0% {
+    -moz-transform: scale(1.2, 1.2);
+  }
+  100% {
+    -moz-transform: scale(1.4, 1.4);
+  }
+}
+
+@-o-keyframes scaleArrow {
+  0% {
+    -o-transform: scale(1.2, 1.2);
+  }
+  100% {
+    -o-transform: scale(1.4, 1.4);
+  }
 }

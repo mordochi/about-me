@@ -10,7 +10,7 @@ export default class Beginning extends Component {
 
     this.state = {
       clicked: false,
-      showModal: true,
+      showModal: false,
       stop: false,
       textTyping: ''
     };

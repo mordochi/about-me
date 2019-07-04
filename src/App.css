@@ -47,3 +47,24 @@
 .top {
   z-index: 10;
 }
+
+.top .appear {
+  opacity: 1;
+  transition: 1s linear;
+  -webkit-transition: 1s linear;
+  -moz-transition: 1s linear;
+  -o-transition: 1s linear;
+}
+
+.top .show-text {
+  opacity: 1;
+  transform: rotate3d(0, 1, 0, -3deg) translate(0px, 0px);
+  -webkit-transform: rotate3d(0, 1, 0, -3deg) translate(0px, 0px);
+  -moz-transform: rotate3d(0, 1, 0, -3deg) translate(0px, 0px);
+  -o-transform: rotate3d(0, 1, 0, -3deg) translate(0px, 0px);
+  transition: 1s linear;
+  -webkit-transition: 1s linear;
+  -moz-transition: 1s linear;
+  -o-transition: 1s linear;
+}
+
