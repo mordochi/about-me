@@ -118,7 +118,7 @@ export default class App extends Component {
     geometry.computeFaceNormals();
     geometry.computeVertexNormals();
 
-    let material = new THREE.MeshLambertMaterial( { color: 0xffbf63, side: THREE.DoubleSide, shading: THREE.FlatShading, } );
+    let material = new THREE.MeshLambertMaterial( { color: 0xffbf63, side: THREE.DoubleSide, flatShading: THREE.FlatShading, } );
     let plane = new THREE.Mesh( geometry, material );
     plane.rotation.x = - Math.PI / 2;
     plane.position.x = 0;
@@ -189,9 +189,6 @@ export default class App extends Component {
     
 
     let loader = new THREE.TextureLoader();
-    let material = new THREE.MeshLambertMaterial({
-      map: loader.load(rangerSign)
-    });
     let materials = [
       new THREE.MeshLambertMaterial({ color: 0xffffff }),
       new THREE.MeshLambertMaterial({ color: 0xffffff }),

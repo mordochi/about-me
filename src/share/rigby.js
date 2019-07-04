@@ -68,8 +68,8 @@ export default function createRigby(scene) {
 
   //mouth
   let geometryMouth = new THREE.CylinderGeometry( 15, 125, 215, 32 );
-  for (var i = 0; i < geometryMouth.vertices.length; i++) {
-    var vertex = geometryMouth.vertices[i];
+  for (let i = 0; i < geometryMouth.vertices.length; i++) {
+    let vertex = geometryMouth.vertices[i];
     if (vertex.y >= 0) {
       vertex.z -= 50;
     }
@@ -83,8 +83,8 @@ export default function createRigby(scene) {
 
   //mouth brown
   let geometryMouthBrown = new THREE.CylinderGeometry( 17, 127, 216, 32 );
-  for (var i = 0; i < geometryMouthBrown.vertices.length; i++) {
-    var vertex = geometryMouthBrown.vertices[i];
+  for (let i = 0; i < geometryMouthBrown.vertices.length; i++) {
+    let vertex = geometryMouthBrown.vertices[i];
     if(vertex.z > 0) {
       vertex.z = 0;
     }
@@ -118,8 +118,8 @@ export default function createRigby(scene) {
 
   //ear
   let geometryEar = new THREE.SphereGeometry( 30, 16, 16 );
-  for (var i = 0; i < geometryEar.vertices.length; i++) {
-    var vertex = geometryEar.vertices[i];
+  for (let i = 0; i < geometryEar.vertices.length; i++) {
+    let vertex = geometryEar.vertices[i];
     if(vertex.z > 20) {
       vertex.z = 20;
     }  

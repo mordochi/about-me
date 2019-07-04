@@ -8,8 +8,8 @@ export default function createMordecai(scene) {
 
   //blue
   let geometryHeadBlueTop = new THREE.SphereGeometry( 202, 120, 120 );
-  for (var i = 0; i < geometryHeadBlueTop.vertices.length; i++) {
-    var vertex = geometryHeadBlueTop.vertices[i];
+  for (let i = 0; i < geometryHeadBlueTop.vertices.length; i++) {
+    let vertex = geometryHeadBlueTop.vertices[i];
     if (vertex.y <= 30) {
       vertex.x = 0;
       vertex.y = 30;
@@ -24,8 +24,8 @@ export default function createMordecai(scene) {
   let sphereHeadBlueTop = new THREE.Mesh( geometryHeadBlueTop, materialHeadBlueTop );
 
   let geometryHeadBlueBottom = new THREE.SphereGeometry( 202, 120, 120 );
-  for (var i = 0; i < geometryHeadBlueBottom.vertices.length; i++) {
-    var vertex = geometryHeadBlueBottom.vertices[i];
+  for (let i = 0; i < geometryHeadBlueBottom.vertices.length; i++) {
+    let vertex = geometryHeadBlueBottom.vertices[i];
     if (vertex.y <= -40) {
       vertex.y = -40;
     }

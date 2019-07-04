@@ -9,12 +9,10 @@ export default function createMascot(scene, color, mood, arm_position) {
 
   //mouth
   let geometryMouth = new THREE.CylinderGeometry( 10, 20, 40, 8, 3 );
-  let modifier = new SubdivisionModifier(2);
   geometryMouth.mergeVertices();
-  
+  let modifier = new SubdivisionModifier(2);
   modifier.modify(geometryMouth);
-  geometryMouth.computeFaceNormals();
-  geometryMouth.computeVertexNormals();
+  geometryMouth.faceVertexUvs[0].length = 0;
 
   let materialMouth = new THREE.MeshLambertMaterial( {color: color} );
   let cylinderMouth = new THREE.Mesh( geometryMouth, materialMouth );
@@ -27,7 +25,8 @@ export default function createMascot(scene, color, mood, arm_position) {
   geometryNose.applyMatrix( new THREE.Matrix4().makeScale( 1.5, 1.0, 1.0 ) );
   let modifierNose = new SubdivisionModifier(2);
   geometryNose.mergeVertices();
-  modifier.modify(geometryNose);
+  modifierNose.modify(geometryNose);
+  geometryNose.faceVertexUvs[0].length = 0;
 
   let materialNose = new THREE.MeshLambertMaterial( {color: 0x000000} );
   let cylinderNose = new THREE.Mesh( geometryNose, materialNose );
@@ -38,8 +37,8 @@ export default function createMascot(scene, color, mood, arm_position) {
   //ear
   let geometryEar = new THREE.SphereGeometry( 5, 10, 6 );
   geometryEar.applyMatrix( new THREE.Matrix4().makeScale( 2.5, 6, 1.0 ) );
-  for (var i = 0; i < geometryEar.vertices.length; i++) {
-    var vertex = geometryEar.vertices[i];
+  for (let i = 0; i < geometryEar.vertices.length; i++) {
+    let vertex = geometryEar.vertices[i];
     if (vertex.y < 0) {
       vertex.y = 0;
     } 
@@ -54,6 +53,7 @@ export default function createMascot(scene, color, mood, arm_position) {
   let modifierEar = new SubdivisionModifier(2);
   geometryEar.mergeVertices();
   modifierEar.modify(geometryEar);
+  geometryEar.faceVertexUvs[0].length = 0;
   
   let materialEar = new THREE.MeshLambertMaterial( {color: color} );
   let cylinderEar = new THREE.Mesh( geometryEar, materialEar );
@@ -75,6 +75,7 @@ export default function createMascot(scene, color, mood, arm_position) {
   let modifierEye = new SubdivisionModifier(2);
   geometryEye.mergeVertices();
   modifierEye.modify(geometryEye);
+  geometryEye.faceVertexUvs[0].length = 0;
 
   let materialEye = new THREE.MeshLambertMaterial( {color: 0xffffff} );
   let cylinderEye = new THREE.Mesh( geometryEye, materialEye );
@@ -84,6 +85,7 @@ export default function createMascot(scene, color, mood, arm_position) {
   let modifierEyeBlack = new SubdivisionModifier(2);
   geometryEyeBlack.mergeVertices();
   modifierEyeBlack.modify(geometryEyeBlack);
+  geometryEyeBlack.faceVertexUvs[0].length = 0;
 
   let materialEyeBlack = new THREE.MeshLambertMaterial( {color: 0x000000} );
   let cylinderEyeBlack = new THREE.Mesh( geometryEyeBlack, materialEyeBlack );
@@ -94,6 +96,7 @@ export default function createMascot(scene, color, mood, arm_position) {
   let modifierEyeShine = new SubdivisionModifier(2);
   geometryEyeShine.mergeVertices();
   modifierEyeShine.modify(geometryEyeShine);
+  geometryEyeShine.faceVertexUvs[0].length = 0;
 
   let materialEyeShine = new THREE.MeshLambertMaterial( {color: 0xffe8d1} );
   let cylinderEyeShine = new THREE.Mesh( geometryEyeShine, materialEyeShine );
@@ -189,10 +192,8 @@ export default function createMascot(scene, color, mood, arm_position) {
   geometryBody.applyMatrix( new THREE.Matrix4().makeScale( 1.25, 1, 1 ) );
   let modifierBody = new SubdivisionModifier(2);
   geometryBody.mergeVertices();
-  
   modifierBody.modify(geometryBody);
-  geometryBody.computeFaceNormals();
-  geometryBody.computeVertexNormals();
+  geometryBody.faceVertexUvs[0].length = 0;
 
   let materialBody = new THREE.MeshLambertMaterial( {color: color} );
   let cylinderBody = new THREE.Mesh( geometryBody, materialBody );
@@ -202,10 +203,8 @@ export default function createMascot(scene, color, mood, arm_position) {
   let geometryArm = new THREE.CylinderGeometry( 2, 3, 35, 8, 3 );
   let modifierArm = new SubdivisionModifier(2);
   geometryArm.mergeVertices();
-  
   modifierArm.modify(geometryArm);
-  geometryArm.computeFaceNormals();
-  geometryArm.computeVertexNormals();
+  geometryArm.faceVertexUvs[0].length = 0;
 
   let materialArm = new THREE.MeshLambertMaterial( {color: color} );
   let cylinderArm = new THREE.Mesh( geometryArm, materialArm );
@@ -296,7 +295,7 @@ export default function createMascot(scene, color, mood, arm_position) {
   //light
   let light = new THREE.PointLight( 0xffffff, 0.6, 300 );
   light.position.set( 30, 50, 100 );
-  let pointLightHelper = new THREE.PointLightHelper( light, 300 );
+  //let pointLightHelper = new THREE.PointLightHelper( light, 300 );
 
 
   let groupHead = new THREE.Group();

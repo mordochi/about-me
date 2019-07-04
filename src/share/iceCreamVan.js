@@ -83,6 +83,7 @@ export default function createIceCreamVan(scene) {
   let modifierTire = new SubdivisionModifier(2);
   geometryTire.mergeVertices();
   modifierTire.modify(geometryTire);
+  geometryTire.faceVertexUvs[0].length = 0;
 
   let materialTire = new THREE.MeshBasicMaterial( {color: 0x000000} );
   let cylinderTire = new THREE.Mesh( geometryTire, materialTire );
@@ -93,6 +94,7 @@ export default function createIceCreamVan(scene) {
   let modifierTireInner = new SubdivisionModifier(2);
   geometryTireInner.mergeVertices();
   modifierTireInner.modify(geometryTireInner);
+  geometryTireInner.faceVertexUvs[0].length = 0;
 
   let materialTireInner = new THREE.MeshBasicMaterial( {color: 0xb2b2b2} );
   let cylinderTireInner = new THREE.Mesh( geometryTireInner, materialTireInner );
@@ -178,7 +180,7 @@ export default function createIceCreamVan(scene) {
   //light
   let light = new THREE.PointLight( 0xffe08c, 0.5, 1000 );
   light.position.set( -600, 160, 240 );
-  let pointLightHelper = new THREE.PointLightHelper( light, 300 );
+  //let pointLightHelper = new THREE.PointLightHelper( light, 300 );
 
 
   let van = new THREE.Group();

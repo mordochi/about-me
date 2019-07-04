@@ -75,7 +75,7 @@ export default function createBillboard(scene, color_board, color_others) {
   //light
   let light = new THREE.PointLight( 0xffffff, 0.6, 1000 );
   light.position.set( 50, -500, 200 );
-  let pointLightHelper = new THREE.PointLightHelper( light, 300 );
+  //let pointLightHelper = new THREE.PointLightHelper( light, 300 );
 
   let billboard = new THREE.Group();
   billboard.add( rightTop );

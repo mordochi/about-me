@@ -216,11 +216,11 @@ export default function createStage(scene) {
   //light
   let light = new THREE.PointLight( 0xffffff, 0.6, 1000 );
   light.position.set( 0, 300, 0 );
-  let pointLightHelper = new THREE.PointLightHelper( light, 1000 );
+  //let pointLightHelper = new THREE.PointLightHelper( light, 1000 );
 
   let lightSign = new THREE.PointLight( 0xffffff, 0.7, 500 );
   lightSign.position.set( -200, 400, 550 );
-  let pointLightHelperSign = new THREE.PointLightHelper( lightSign, 500 );
+  //let pointLightHelperSign = new THREE.PointLightHelper( lightSign, 500 );
 
   let stage = new THREE.Group();
   stage.add(cylinderPlatform);
