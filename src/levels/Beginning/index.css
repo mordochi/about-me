@@ -20,7 +20,7 @@
   border-radius: 30px;
   box-sizing: border-box; 
   animation: clickToBeginBefore 2s linear infinite;
-  -webkit-animation: clickToBeginBefore 2s linear infinite; /* Safari 4.0 - 8.0 */
+  -webkit-animation: clickToBeginBefore 2s linear infinite;
   -moz-animation: clickToBeginBefore 2s linear infinite;
   -o-animation: clickToBeginBefore 2s linear infinite;
 }
@@ -38,7 +38,7 @@
   opacity: 0;
   box-sizing: border-box; 
   animation: clickToBeginAfter 2s linear infinite;
-  -webkit-animation: clickToBeginAfter 2s linear infinite; /* Safari 4.0 - 8.0 */
+  -webkit-animation: clickToBeginAfter 2s linear infinite;
   -moz-animation: clickToBeginAfter 2s linear infinite;
   -o-animation: clickToBeginAfter 2s linear infinite;
 }
