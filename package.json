@@ -6,7 +6,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
-    "three": "^0.104.0",
+    "three": "^0.125.0",
     "three-obj-mtl-loader": "^1.0.3",
     "three-orbitcontrols": "^2.102.1",
     "three-subdivision-modifier": "^1.0.5"
